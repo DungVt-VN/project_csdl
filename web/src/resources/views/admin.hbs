@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table UI</title>
+
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+  <div class="container-fluid bg-1 text-center" style="icon-align:center">
+    <img src="./images/admin.png" alt="admin" width="40px" height="40px">
+    <br>
+    <div style="margin:10px">
+      <a href="/" style="font-size:17px;text-align:center;text-decoration:none">Logout</a>
+    </div>
+</div>
+
+
+<!-- First Container -->
+
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-1 text-center">
+  <h2 class="margin">Danh Sách Nhân Viên</h2>
+</div>
+  <div class="container">
+    <div class="mt-4">
+    <div class="row">
+      {{#each values1}}
+          <div class="col-sm-2 col-lag-2">
+            <div>
+              <div class="card card-item">
+                <img src="{{this.images}}" class="card-img-top" alt="{{this.ten_nhan_vien}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{this.ten_nhan_vien}}</h5>
+                  <p class="card-text">So hop dong: {{this.so_hop_dong}}</p>
+				  <p class="card-text">CCCD: {{this.so_cccd}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      {{/each}}
+
+    </div>
+</div>
+  </div>
+  <div class="container">
+      <h2>THÊM NHÂN VIÊN </h2>
+  <form action="/admin/insert_nv" method = "POST">
+	<div class="form-group">
+      <label for="text">Full Name</label> :</label>
+      <input class="form-control" name="_name" id="focusedInput" type="text" placeholder="Full Nam">
+    </div>
+
+	<div class="form-group">
+      <label for="text">So_CCCD :</label>
+      <input class="form-control" name="_CCCD" id="focusedInput" type="text" placeholder="CCCD">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Ngay Bat Dau Lam Viec :</label>
+      <input class="form-control" name="date_begin" id="focusedInput" type="date" >
+    </div>
+
+	<div class="form-group">
+      <label for="email">Link Anh :</label>
+      <input class="form-control" name="link_a" id="pwd" type="text" placeholder="Dan link anh vao day">
+    </div>
+
+	<div class="form-group">
+      <label for="email">User :</label>
+      <input class="form-control" name="user" id="pwd" type="text" placeholder="User" >
+    </div>
+
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" name="pass" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+    </div>
+
+	<div class="container">
+    	<h2>Sa Thải Nhân Viên</h2>
+  		<form action="/admin/delete_nv" method = "POST">
+			<div class="row">
+				<div class="form-group" style="margin:10px">
+      				<label for="text">Full Name</label> :</label>
+      				<input class="form-control" name="_name" id="focusedInput" type="text" placeholder="Full Nam">
+    			</div>
+
+				<div class="form-group" style="margin:10px">
+      				<label for="text">So_CCCD :</label>
+      				<input class="form-control" name="_CCCD" id="focusedInput" type="text" placeholder="CCCD">
+    			</div>
+			</div>
+    		<button type="submit" class="btn btn-default">Submit</button>
+  		</form>
+</div>
+    </div>
+
+	
+
+  
+	<section class="main-content">
+		<div class="container">
+			<h1>Thiết Bị Xây Dựng</h1>
+			<br>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Tên Thiết Bị</th>
+						<th>Nhà sản xuất</th>
+            <th style="text-align:center">Số Lượng</th>
+					</tr>
+				</thead>
+
+				<tbody>
+          	{{#each values2}}
+					<tr>
+						<td>
+								<h5 class="mb-0">{{this.ten_thiet_bi}}</h5>
+						</td>
+						<td>{{this.nha_san_xuat}}</td>
+            <td style="text-align:center">{{this.count}}</td>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="container">
+			<h1>Thêm Thiết Bị</h1>
+			<form action="/admin/insert_tb" method="POST">
+			  <div class="form-group">
+				<label for="email">Tên Thiết Bị:</label>
+				<input type="text" name="_name" class="form-control" id="focusedInput"  placeholder="Enter Name">
+			  </div>
+			  <div class="form-group">
+				<label for="pwd">Nhà Sản Xuất:</label>
+				<input type="text" name="nsx" class="form-control" id="focusedInput"  placeholder="Enter Name">
+			  </div>
+			  <div class="form-group" data-date-type="yyyy-mm-dd">
+				<label for="pwd">Ngày Sản Xuất:</label>
+				<input type="date"  name="ngaysx" class="form-control" id="focusedInput"  placeholder="Enter Date"  value="2002-06-30">
+			  </div>
+
+			  <div class="form-group" data-date-type="yyyy-mm-dd">
+				<label for="pwd">Link ảnh:</label>
+				<input type="text"  name="link_anh" class="form-control" id="focusedInput"  placeholder="Nhap Link Ảnh"  placeholder="Nhap link Ảnh">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		  </div>
+
+			<div class="container">
+    	<h2>Xóa Thiết Bị</h2>
+  		<form action="/admin/delete_tb" method = "POST">
+			<div class="row">
+				<div class="form-group" style="margin:10px">
+      				<label for="text">Mã Thiết BI</label> :</label>
+      				<input class="form-control" name="_name" id="focusedInput" type="text" placeholder="Mã Thiết Bị">
+    			</div>
+			</div>
+    		<button type="submit" class="btn btn-default">Submit</button>
+  		</form>
+		</div>
+    	</div>
+
+
+		<div class="container">
+			<br>
+			<br>
+			<h1>Thông Tin Khách Hàng</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Full Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values5}}
+					<tr>
+						<th>{{this.ten_khach_hang}}</th>
+						<th>{{this.so_dien_thoai}}</th>
+						<th>{{this.email}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container">
+			<br>
+			<br>
+			<h1>Hợp Đồng Cho Thuê</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Mã Hợp Đồng</th>
+						<th>Nhân Viên Bàn Giao Máy</th>
+						<th>Ngày Thuê</th>
+						<th>Khách Hàng Thuê Máy</th>
+						<th>Mã Thiết Bị</th>
+						<th>Tên Thiết Bị</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values4}}
+					<tr>
+						<th>{{this.ma_hd}}</th>
+						<th>{{this.ten_nhan_vien}}</th>
+						<th tyle="date">{{this.ngay_bat_dau_thue}}</th>
+						<th>{{this.ten_khach_hang}}</th>
+						<th>{{this.ma_tb}}</th>
+						<th>{{this.ten_thiet_bi}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="container">
+			<br>
+			<br>
+			<h1>Đăng Ký Tạm Thời</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Name SP</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values3}}
+					<tr>
+						<th>{{this._name}}</th>
+						<th>{{this.telephone}}</th>
+						<th>{{this.email}}</th>
+						<th>{{this.name_sp}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+    
+    
+
+	</section>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

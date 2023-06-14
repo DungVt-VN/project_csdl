@@ -1,0 +1,38 @@
+{
+  "name": "project_ck",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,scss}",
+    "start": "nodemon --inspect src/index.js ",
+    "watch": "node-sass --watch src/resources/scss/app.scss --output src/public/css/",
+    "watch2": "node-sass --watch src/resources/scss/main.scss --output src/public/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sondn",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "mongoose": "^6.4.5",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "pg-promise": "^10.11.1",
+    "req": "^0.1.4",
+    "sequelize": "^6.21.3",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.20.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "morgan": "^1.10.0",
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  }
+}

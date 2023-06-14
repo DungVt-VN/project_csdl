@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table UI</title>
+
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+  <div class="container-fluid bg-1 text-center" style="icon-align:center">
+    <img src="./images/admin.png" alt="admin" width="40px" height="40px">
+    <br>
+    <div style="margin:10px">
+      <a href="/" style="font-size:17px;text-align:center;text-decoration:none">Logout</a>
+    </div>
+</div>
+
+
+<!-- First Container -->
+
+
+<!-- Third Container (Grid) -->
+
+  
+	<section class="main-content">
+		<div class="container">
+			<h1>Thiết Bị Xây Dựng</h1>
+			<br>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Tên Thiết Bị</th>
+						<th>Nhà sản xuất</th>
+            <th style="text-align:center">Số Lượng</th>
+					</tr>
+				</thead>
+
+				<tbody>
+          	{{#each values2}}
+					<tr>
+						<td>
+								<h5 class="mb-0">{{this.ten_thiet_bi}}</h5>
+						</td>
+						<td>{{this.nha_san_xuat}}</td>
+            <td style="text-align:center">{{this.count}}</td>
+					</tr>
+				{{/each}}
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="container">
+			<h1>Thêm Thiết Bị Xây Dựng</h1>
+			<form action="/admin/insert_tb" method="POST">
+			  <div class="form-group">
+				<label for="email">Tên Thiết Bị:</label>
+				<input type="text" name="_name" class="form-control" id="focusedInput"  placeholder="Enter Name">
+			  </div>
+			  <div class="form-group">
+				<label for="pwd">Nhà Sản Xuất:</label>
+				<input type="text" name="nsx" class="form-control" id="focusedInput"  placeholder="Enter Name">
+			  </div>
+			  <div class="form-group" data-date-type="yyyy-mm-dd">
+				<label for="pwd">Ngày Sản Xuất:</label>
+				<input type="date"  name="ngaysx" class="form-control" id="focusedInput"  placeholder="Enter Date"  value="2002-06-30">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		  </div>
+
+		<div class="container">
+			<br>
+			<br>
+			<h1>Thông Tin Khách Hàng</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Full Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values5}}
+					<tr>
+						<th>{{this.ten_khach_hang}}</th>
+						<th>{{this.so_dien_thoai}}</th>
+						<th>{{this.email}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="container">
+			<br>
+			<br>
+			<h1>Hợp Đồng Cho Thuê</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Mã Hợp Đồng</th>
+						<th>Nhân Viên Bàn Giao Máy</th>
+						<th>Ngày Thuê</th>
+						<th>Khách Hàng Thuê Máy</th>
+						<th>Mã Thiết Bị</th>
+						<th>Tên Thiết Bị</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values4}}
+					<tr>
+						<th>{{this.ma_hd}}</th>
+						<th>{{this.ten_nhan_vien}}</th>
+						<th tyle="date">{{this.ngay_bat_dau_thue}}</th>
+						<th>{{this.ten_khach_hang}}</th>
+						<th>{{this.ma_tb}}</th>
+						<th>{{this.ten_thiet_bi}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="container">
+			<br>
+			<br>
+			<h1>Đăng Ký Tạm Thời</h1>
+			<br>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Name SP</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each values3}}
+					<tr>
+						<th>{{this._name}}</th>
+						<th>{{this.telephone}}</th>
+						<th>{{this.email}}</th>
+						<th>{{this.name_sp}}</th>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+    
+    
+
+	</section>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
